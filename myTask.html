@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+	<link rel="stylesheet" type="text/css" href="myTask.css">
+</head>
+
+<body >
+	<script src= "myTask.js"></script>
+    <div ng-app="taskList" class='list-area'>
+        <div ng-controller="taskListController">
+
+            <h2>Write Your Task</h2>
+            <div>
+                   
+                <input type="text" ng-model="task.name" placeholder="Task" id="taskname" required>
+                <textarea placeholder='Motivation' ng-model='task.motivation' required></textarea>
+                <input type='button' ng-click='addTask(task)' ng-disabled='!task.name || !task.motivation' value='Add'>
+                <input type='button' ng-click='removeTask(tasks)' ng-disabled='isTaskSelected(tasks)' value='Remove'>
+                <h2><font color="red">{{errortext}}</font></h2>
+            </div>
+            <h2>Your Task's List</h2>
+            <div>
+                <ul ng-repeat='x in tasks'>
+                    <li>
+                        <input type="checkbox" ng-model="x.done">
+                        <label ng-bind="x.todoTask">{{task.name}}</label>
+                        <span ng-bind="x.todoMotivation">{{task.motivation}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
